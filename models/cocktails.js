@@ -36,6 +36,18 @@ module.exports = {
         );
     },
 
+    //Create and add a new cocktail to cocktails table
+    createCocktail(cocktail) {
+        console.log(cocktail);
+        return db.one(`
+        INSERT INTO cocktails (name, fixings, recipe)
+        VALUES ($/name/, $/fixings/, $/recipe/)
+        RETURNING *`, cocktail
+        );
+    },
+
+
+
 
 
 

@@ -33,12 +33,14 @@ const send400 = (err, req, res, next) => {
 //   .get(cocktailsController.getOne, showJSON)
 
 // Collection
-cocktailsRouter.route('/')
-  .get(cocktailsController.getAll, showJSON)
-cocktailsRouter.route('/name/:name')
-  .get(cocktailsController.getByName, showJSON)
 cocktailsRouter.route('/ingredient/:fixn')
-  .get(cocktailsController.getByFixn, showJSON)
+.get(cocktailsController.getByFixn, showJSON)
+cocktailsRouter.route('/name/:name')
+.get(cocktailsController.getByName, showJSON)
+cocktailsRouter.route('/makeNew')
+.post(cocktailsController.storeNewCocktail)
+cocktailsRouter.route('/')
+    .get(cocktailsController.getAll, showJSON)
     
 
 cocktailsRouter.use(handle404);

@@ -11,3 +11,7 @@ const flash = require('connect-flash');
 
 
 //Create a PORT variable 
+const PORT = process.env.PORT || 3000;
+
+//Init Express
+const app = express();

@@ -18,7 +18,6 @@ CREATE TABLE cocktails (
     name VARCHAR(60),
     fixings text,
     recipe text,
-    type VARCHAR(40),
     date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 

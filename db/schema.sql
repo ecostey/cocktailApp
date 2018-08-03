@@ -1,5 +1,5 @@
 -- DROP TABLE IF EXISTS cocktails_alcIngredients;
-DROP TABLE IF EXISTS users_cocktails;
+DROP TABLE IF EXISTS user_favorites;
 DROP TABLE IF EXISTS cocktails;
 DROP TABLE IF EXISTS users;
 -- DROP TABLE IF EXISTS ingredients;
@@ -8,6 +8,7 @@ CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(40) UNIQUE NOT NULL,
   password_digest VARCHAR(40) NOT NULL,
+  nickname VARCHAR(40) NOT NULL,
   date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
@@ -21,7 +22,15 @@ CREATE TABLE cocktails (
     date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
--- CREATE INDEX ON cocktails (name, fixings);
+CREATE INDEX ON cocktails (name, fixings);
+
+
+CREATE TABLE user_favorites (
+    users_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
+    cocktails_id INTEGER REFERENCES cocktails (id),
+    PRIMARY KEY(users_id, cocktails_id)
+);
+
 
 -- CREATE TABLE ingredients (
 --     id SERIAL PRIMARY KEY,
@@ -37,8 +46,4 @@ CREATE TABLE cocktails (
 --   PRIMARY KEY(cocktails_id, ingredients_id)
 -- );
 
--- CREATE TABLE users_cocktails (
---   cocktails_id INTEGER REFERENCES cocktails (id) ON DELETE CASCADE,
---   users_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
---   PRIMARY KEY(cocktails_id, users_id)
--- );
+-- 

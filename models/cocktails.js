@@ -12,11 +12,24 @@ module.exports = {
         return db.many(`
             SELECT name, fixings, recipe
             FROM cocktails
-            ORDER BY cocktails.name`
-        );
+            ORDER BY cocktails.name`);
     },
 
     //Find & list cocktails based on user-inputted cocktail name
+    // findByName(inputName) {
+    //     const inputArr = [inputName].flat();
+    //     const newArr = inputArr.map((name) => {
+    //         return `%${name}%`;
+    //     });
+    //     newArr.join(' AND name LIKE ');
+        
+    //     return db.many(`
+    //     SELECT name, fixings, recipe
+    //     FROM cocktails
+    //     WHERE name LIKE $1`, newArr);
+    // },
+
+    // //Find & list cocktails based on user-inputted cocktail name
     findByName(inputName) {
         inputName = `%${inputName}%`;
         return db.many(`
@@ -32,8 +45,7 @@ module.exports = {
         return db.many(`
             SELECT name, fixings, recipe
             FROM cocktails
-            WHERE fixings LIKE $1`, inputFixn
-        );
+            WHERE fixings LIKE $1`, inputFixn);
     },
 
     //Create and add a new cocktail to cocktails table
@@ -42,15 +54,6 @@ module.exports = {
         return db.one(`
         INSERT INTO cocktails (name, fixings, recipe)
         VALUES ($/name/, $/fixings/, $/recipe/)
-        RETURNING *`, cocktail
-        );
+        RETURNING *`, cocktail);
     },
-
-
-
-
-
-
-
-
 }

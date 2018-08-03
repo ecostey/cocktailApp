@@ -293,30 +293,30 @@ INSERT INTO cocktails (name, fixings, recipe)
 
 
 INSERT INTO users (username, password_digest)
-VALUES
-    (
-        'eac',
-        '2121'
-    );
+    VALUES
+        (
+            'eac',
+            '2121'
+        );
 
 
 
 -- INSERT INTO ingredients (name)
 --   VALUES
---   ('gin'),
---   ('campari'),
---   ('tonic'),
---   ('vermouth'),
---   ('rye whiskey'),
---   ('white rum'),
---   ('lime'),
---   ('rum'),
---   ('ginger beer'),
---   ('rum'),
---   ('vodka'),
---   ('tequila'),
---   ('triple sec');
+    --   ('gin'),
+    --   ('campari'),
+    --   ('tonic'),
+    --   ('vermouth'),
+    --   ('rye whiskey'),
+    --   ('white rum'),
+    --   ('lime'),
+    --   ('rum'),
+    --   ('ginger beer'),
+    --   ('rum'),
+    --   ('vodka'),
+    --   ('tequila'),
+    --   ('triple sec');
 
 -- INSERT INTO cocktails_ingredients (cocktails_id, ingredients_id)
 --   VALUES
---   ((SELECT id FROM cocktails WHERE id = 'Negroni'), (SELECT id FROM ingredient WHERE name = 'gin')),
+--   ((SELECT id FROM cocktails WHERE id = 'Negroni'), (SELECT id FROM ingredient WHERE name = 'gin')), 

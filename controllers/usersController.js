@@ -66,6 +66,7 @@ module.exports = {
     renderLogin,
     handleLogin,
     renderRegister,
+    handleRegister,
     handleLogout,
     usersOnly,
 };

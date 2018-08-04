@@ -9,7 +9,7 @@ const flash = require('connect-flash');
 
 //Import Route & Controller Files
 const cocktailsRouter = require('./routes/cocktailsRouter');
-const userRouter = require('./routes/userRouter');
+const usersRouter = require('./routes/usersRouter');
 const userController = require('./controllers/usersController')
 
 //Create a PORT variable 
@@ -23,6 +23,8 @@ app.use(logger('dev'));
 app.use(express.static('public'));
 
 //set the Views
+app.engine('ejs', require('ejs').renderFile);
+app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 
 //Import middleware, Passport:
@@ -43,7 +45,7 @@ app.use(passport.session());
 
 //Init Router Files
 app.use('/cocktails', cocktailsRouter);
-app.use('/login', userRouter);
+app.use('/login', usersRouter);
 
 //connect to PORT
 app.listen(PORT, () => {

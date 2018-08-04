@@ -34,7 +34,7 @@ const send400 = (err, req, res, next) => {
 // cocktailsRouter.route('/:id')
 //   .get(cocktailsController.getOne, showJSON)
 
-// Collection
+// Collection routers - connect to viewController:
 cocktailsRouter.route('/ingredient/:fixn')
 .get(cocktailsController.getByFixn, viewController.showByIngredient)
 cocktailsRouter.route('/name/:name')

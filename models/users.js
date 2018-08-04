@@ -30,7 +30,7 @@ function createUser(username, password, preferredName) {
 
   //After findByUsername (), Confirm login information and 'log in' the user.
   //AUTH: bcrypt & compare password to user.password
-  async function login(username, password) {
+  async function register(username, password) {
     try {
       const user = await findByUsername(username);
       const res = await bcrypt.compare(password, user.password_digest);
@@ -57,6 +57,6 @@ function createUser(username, password, preferredName) {
   module.exports = {
       createUser,
       findByUsername,
-      login,
+      register,
       updatePrefName
   };

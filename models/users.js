@@ -4,16 +4,17 @@ const db = require('../config/connection');
 
 //Register/create a user account by allowing the user to add a username and password to the users table.
 //For AUTH: bcrypt & hash 
-function register(username, password) {
+function createUser(username, password, preferredName) {
     return bcrypt.hash(password, 8)
       .then((hash) => {
         return db.one(`
-          INSERT INTO users (username, password_digest, nickname)
-          VALUES ($/username/, $/password_digest/, $/nickname/)
+          INSERT INTO users (username, password_digest, preferredName)
+          VALUES ($/username/, $/password_digest/, $/preferredName/)
           RETURNING *
         `, {
           username,
           password_digest: hash,
+          preferredName,
         });
       });
   }
@@ -34,7 +35,7 @@ function register(username, password) {
       const user = await findByUsername(username);
       const res = await bcrypt.compare(password, user.password_digest);
       if (!res) {
-        throw new Error('bad password')
+        throw new Error('Incorrect entry. Please try again.')
       }
       delete user.password_digest;
       return user;
@@ -43,18 +44,19 @@ function register(username, password) {
     }
   }
 
-//If user is logged in- allow them to change their nickname.
-  function updateNickname(nickname){
+//If user is logged in- allow them to change their preferredName.
+  function updatePrefName(preferredName){
       return db.one(`
         UPDATE users
-        SET nickname = $/nickname/
+        SET preferredName = $/preferredName/
         WHERE 
       `)
   }
 
-
+//Export all functions
   module.exports = {
-      register,
+      createUser,
       findByUsername,
-      login
+      login,
+      updatePrefName
   };

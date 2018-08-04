@@ -1,0 +1,17 @@
+<%- include('header'); -%>
+    <form action="http://localhost:3000/cocktails" method="POST"></form>
+    <h1>
+        Title
+    </h1>
+    Search by Cocktail Name:
+    <br>
+    Name:
+    <input id="<%=cocktails.name %>" type="text" name="name" value="cocktails.name">
+    <br> Search by Ingredient:
+    <br>
+    <input id="<%=cocktails.fixing %>" type="text" name="fixings" value="cocktails.fixing">
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+    </form>
+    <%- include('footer'); -%>

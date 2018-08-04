@@ -4,7 +4,7 @@ const express = require('express');
 //Import controllers:
 //const authController = require('../controllers/authController');
 const cocktailsController = require('../controllers/cocktailsController');
-//const viewController = require('../controllers/resHandler');
+const viewController = require('../controllers/viewController');
 
 const cocktailsRouter = express.Router();
 
@@ -25,8 +25,10 @@ const send400 = (err, req, res, next) => {
     res.sendStatus(400);
 };
 
-//List Routes
+
 //Special urls
+
+
 
 // Items
 // cocktailsRouter.route('/:id')
@@ -34,11 +36,11 @@ const send400 = (err, req, res, next) => {
 
 // Collection
 cocktailsRouter.route('/ingredient/:fixn')
-.get(cocktailsController.getByFixn, showJSON)
+.get(cocktailsController.getByFixn, viewController.showByIngredient)
 cocktailsRouter.route('/name/:name')
-.get(cocktailsController.getByName, showJSON)
-cocktailsRouter.route('/makeNew')
-.post(cocktailsController.storeNewCocktail)
+.get(cocktailsController.getByName, viewController.showByName)
+// cocktailsRouter.route('/makeNew')
+// .post(cocktailsController.storeNewCocktail)
 cocktailsRouter.route('/')
     .get(cocktailsController.getAll, showJSON)
     

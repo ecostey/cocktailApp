@@ -11,16 +11,6 @@ module.exports = {
             WHERE user_id = $1`, id);
     },
 
-    // //Allow Users to make updates to their favorited cocktails
-    // updateFav(id) {
-    //     return db.one(`
-    //     UPDATE user_favorites
-    //     SET /$name/, /$fixings/, /$recipe/
-    //     FROM user_favorites
-    //     WHERE user_favorites.cocktails_id = cocktails.id
-    //     `)
-    // },
-
     //Users can delete cocktails from their 'favorites' list
     //Use pgpromise to delete ONE row (by cocktail_id) from the favorites/join table.
     deleteAFav(id) {
@@ -31,8 +21,17 @@ module.exports = {
     },
 
 
-
-
-
 }
+
+
+    //**** POST MVP FAVORITES TABLE: */
+    // //Allow Users to make updates to their favorited cocktails
+    // updateFav(id) {
+    //     return db.one(`
+    //     UPDATE user_favorites
+    //     SET /$name/, /$fixings/, /$recipe/
+    //     FROM user_favorites
+    //     WHERE user_favorites.cocktails_id = cocktails.id
+    //     `)
+    // },
 

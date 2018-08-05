@@ -292,11 +292,12 @@ INSERT INTO cocktails (name, fixings, recipe)
     );
 
 
-INSERT INTO users (username, password_digest)
+INSERT INTO users (username, password_digest, prefName)
     VALUES
         (
             'eac',
-            '2121'
+            'eac',
+            'eac'
         );
 
 

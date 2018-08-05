@@ -8,7 +8,7 @@ CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(40) UNIQUE NOT NULL,
   password_digest VARCHAR(40) NOT NULL,
-  nickname VARCHAR(40) NOT NULL,
+  prefName VARCHAR(40) NOT NULL,
   date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 

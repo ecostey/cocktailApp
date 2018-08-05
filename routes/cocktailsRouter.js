@@ -44,6 +44,9 @@ cocktailsRouter.route('/name/:name')
 cocktailsRouter.route('/')
     .get(cocktailsController.getAll, showJSON)
     
+cocktailsRouter.route('/test')
+    .get((req, res, error) => console.log(req));
+
 
 cocktailsRouter.use(handle404);
 

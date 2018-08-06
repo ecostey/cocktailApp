@@ -1,11 +1,15 @@
 
 //Import Middleware, Express
 const express = require('express');
-//Import usersController.js
+//Import usersController.js & viewController.js
 const usersController = require('../controllers/usersController');
+const viewController = require('../controllers/viewController');
+
 //Activate express
 const usersRouter = express.Router();
 
+usersRouter.route('/:id')
+    .get(usersController.getOneUser, viewController.showUser);
 
 usersRouter.route('/login')
     .get(usersController.renderLogin)

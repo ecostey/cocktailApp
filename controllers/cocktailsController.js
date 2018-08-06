@@ -8,27 +8,27 @@ module.exports = {
     getAll(req, res, next) {
         db.findAll()
             .then((cocktails) => {
-                res.locals.data = cocktails;
+                res.locals.cocktails = cocktails;
                 next();
             })
             .catch(e => next(e));
     },
 
     //Retrieve all the cocktails with a certain name & store them in res.locals
-    getByName(req, res, next) {
-        db.findByName(req.params.name)
-            .then((cocktails) => {
-                res.locals.data = cocktails;
-                next();
-            })
-            .catch(e => next(e));
-    },
+    // getByName(req, res, next) {
+    //     db.findByName(req.body)
+    //         .then((cocktails) => {
+    //             res.locals.data = cocktails;
+    //             next();
+    //         })
+    //         .catch(e => next(e));
+    // },
 
     //Retrieve all the cocktails with certain fixing(s) & store them in res.locals
     getByFixn(req, res, next) {
-        db.findByFixn(req.params.fixn)
+        db.findByFixn(req.body)
             .then((cocktails) => {
-                res.locals.data = cocktails;
+                res.locals.cocktails = cocktails;
                 next();
             })
             .catch(e => next(e));
@@ -38,7 +38,6 @@ module.exports = {
     storeNewCocktail(req, res, next) {
         console.log(req.body);
         const {name, fixings, recipe} = req.body;
-        debugger
         db.createCocktail({name, fixings, recipe})
             .then((newCocktail) => {
                 res.locals.data = newCocktail;
@@ -50,4 +49,4 @@ module.exports = {
 
 
 
-}
+};

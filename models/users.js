@@ -20,12 +20,12 @@ function createUser(username, password, preferredName) {
   }
 
   //Find a user by their username
-  function findByUsername(username) {
+  function findById(id) {
     return db.one(`
       SELECT *
       FROM users
-      WHERE username = $1
-    `, username);
+      WHERE id = $1
+    `, id);
   }
 
   //After findByUsername (), Confirm login information and 'log in' the user.
@@ -56,7 +56,7 @@ function createUser(username, password, preferredName) {
 //Export all functions
   module.exports = {
       createUser,
-      findByUsername,
+      findById,
       register,
       updatePrefName
   };

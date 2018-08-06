@@ -35,17 +35,43 @@ const send400 = (err, req, res, next) => {
 //   .get(cocktailsController.getOne, showJSON)
 
 // Collection routers - connect to viewController:
-cocktailsRouter.route('/ingredient/:fixn')
-.get(cocktailsController.getByFixn, viewController.showByIngredient)
-cocktailsRouter.route('/name/:name')
-.get(cocktailsController.getByName, viewController.showByName)
+// cocktailsRouter.route('/name')
+// .get(cocktailsController.getByName, viewController.showByName);
+
+cocktailsRouter.route('search')
+  .get((req, res, next) => {
+    res.render('/cocktails_search', {
+      redirect: '/cocktails/test/'
+    })
+  })
+// cocktailsRouter.route('/search/name')
+//   .get((req, res, next) => {
+//     res.render('cocktails_search')
+//   })
+
+
+cocktailsRouter.route('/ingredient')
+.get((req, res) => {
+res.render('cocktails_search');
+})
+
+cocktailsRouter.route('/ingredient/search')
+.get(cocktailsController.getByFixn, (req, res) => {
+  res.render('cocktails');
+})
+
 // cocktailsRouter.route('/makeNew')
 // .post(cocktailsController.storeNewCocktail)
 cocktailsRouter.route('/')
-    .get(cocktailsController.getAll, showJSON)
+    .get(cocktailsController.getAll, (req, res) => {
+      res.render('cocktails');
+    })
     
-cocktailsRouter.route('/test')
-    .get((req, res, error) => console.log(req));
+// cocktailsRouter.get('/test', (req, res) => {
+//     console.log(req)
+//     res.send(req.query)
+// });
+        
 
 
 cocktailsRouter.use(handle404);

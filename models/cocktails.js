@@ -30,14 +30,14 @@ module.exports = {
     // },
 
     // //Find & list cocktails based on user-inputted cocktail name
-    findByName(inputName) {
-        inputName = `%${inputName}%`;
-        return db.many(`
-            SELECT name, fixings, recipe
-            FROM cocktails
-            WHERE name LIKE $1`, inputName
-        );
-    },
+    // findByName(inputName) {
+    //     const inputName = `%${inputName}%`;
+    //     return db.many(`
+    //         SELECT name, fixings, recipe
+    //         FROM cocktails
+    //         WHERE name LIKE $1`, inputName
+    //     );
+    // },
 
     //Find & list cocktails based on user-inputted cocktail name
     findByFixn(inputFixn) {

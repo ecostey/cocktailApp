@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
+const methodOverride = require('method-override');
 
 //Import Route & Controller Files
 const cocktailsRouter = require('./routes/cocktailsRouter');
@@ -18,6 +19,9 @@ const PORT = process.env.PORT || 3000;
 //Init middleware (Express, Morgan)
 const app = express();
 app.use(logger('dev'));
+
+//Apply method-override
+app.use(methodOverride('_method'));
 
 //set the static files
 app.use(express.static('public'));
@@ -45,7 +49,8 @@ app.use(passport.session());
 
 //Init Router Files
 app.use('/cocktails', cocktailsRouter);
-app.use('/login', usersRouter);
+debugger;
+app.use('/user', usersRouter);
 
 //connect to PORT
 app.listen(PORT, () => {

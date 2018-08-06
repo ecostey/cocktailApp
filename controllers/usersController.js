@@ -10,6 +10,16 @@ function renderLogin(req, res) {
     });
 }
 
+function getOneUser(req, res, next) {
+    debugger;
+    db.findById(req.params.id)
+        .then((users) => {
+            res.locals.users = users;
+            next();
+        })
+        .catch(e => next(e));
+}
+
 //How to handle a user's log in: 
 //use middleware, Passport, to authenticate log in
 //If successful, redirect user to the root/landing page
@@ -69,4 +79,6 @@ module.exports = {
     handleRegister,
     handleLogout,
     usersOnly,
+
+    getOneUser,
 };

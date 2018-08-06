@@ -1,12 +1,9 @@
 
-<div class="cocktailPlate">
-    <p class="image is-64x64">
-        <img src="../../project2Pictures/kisspng-bacardi-cocktail-orange-juice-martini-vector-cocktail-5a9369de900087.6509207715196103345898.jpg">
-    </p>
-    <p>
-        <span class="cName"><%= cocktails.name %></span>
-        <br>
-        <span class="fixing"><%= cocktails.fixing %></span>
-    </p>
-    <p class="recipe"> <%= cocktails.recipe</p>
-</div>
+<h1> hello </h1>
+<ul>
+<% cocktails.forEach(cocktail => { %>
+    <li><%= cocktail.name%></li>
+    <li><%= cocktail.fixings%></li>
+    <li><%= cocktail.recipe%></li>
+    <% }) %>
+</ul>

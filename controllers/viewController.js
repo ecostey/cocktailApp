@@ -6,13 +6,26 @@ module.exports = {
     res.render('../views/cocktails_search')
   },
 
-  showByName(req, res) {
-    res.render('../views/cocktails_search');
-  },
+  // showByName(req, res) {
+  //   res.render('cocktails', {
+  //     cocktails: res.locals.data
+  //   });
+  // },
 
   showByIngredient(req, res) {
-    res.render('../views/cocktails_search');
+    res.render('cocktails_search', {
+      cocktails: res.locals.retCocktail
+    });
   },
+
+
+  showUser(req, res) {
+    debugger;
+    res.render('users_search', {
+      users: res.locals.users
+    });
+  },
+
 
   show404(req, res, next) {
     res.send(404);

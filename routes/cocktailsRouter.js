@@ -5,9 +5,10 @@ const express = require('express');
 const cocktailsController = require('../controllers/cocktailsController');
 const viewController = require('../controllers/viewController');
 
+//Import express.Router
 const cocktailsRouter = express.Router();
 
-//List Routes:
+//List Routes by specificity:
 cocktailsRouter.route('/')
   .get(cocktailsController.getAll, viewController.showAll, viewController.show404)
   .post(cocktailsController.create, viewController.handleCreate);
@@ -32,24 +33,3 @@ cocktailsRouter.route('/:id')
 
 //Export this router file.
 module.exports = cocktailsRouter;
-
-
-
-
-
-
-
-
-// const showJSON = (req, res) => {
-//     res.json(res.locals.data);
-// };
-
-// const handle404 = (err, req, res, next) => {
-//     console.error(err);
-//     res.sendStatus(404);
-// };
-
-// const send400 = (err, req, res, next) => {
-//     console.error(err);
-//     res.sendStatus(400);
-// };

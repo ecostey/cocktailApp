@@ -1,5 +1,8 @@
 <%- include('./partials/boilerplate') %>
-    <h1>Peruse Cocktails</h1>
+    <h4>Peruse Cocktails</h4>
+    <p>OR</p>
+    <h4>Pick a number (1-50) and be surprised!</h4>
+    <!-- <form></form> -->
     <% cocktails.forEach((cocktail) => { %>
         <%- include('./partials/changeInfo.ejs', {cocktail: cocktail}) %>
             <% }) %>

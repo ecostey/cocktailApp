@@ -2,6 +2,7 @@
 const path = require ('path');
 const logger = require('morgan');
 const express = require('express');
+const methodOverride = require('method-override')
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
@@ -13,13 +14,19 @@ const cocktailsRouter = require('./routes/cocktailsRouter');
 
 //Init middleware (Express, Morgan)
 const app = express();
+app.use(express.static(path.join(__dirname, './app/public')));
 app.use(logger('dev'));
+
 
 //Init bodyParser
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
+//Init method-override
+app.use(methodOverride('_method'))
 
+//connect & set up Views path
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 

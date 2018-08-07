@@ -26,8 +26,6 @@ cocktailsRouter.route('/:id')
     viewController.showOne,
     viewController.show404,
   )
-
-
   .delete(cocktailsController.destroy, viewController.handleDestroy)
   .put(cocktailsController.update, viewController.handleUpdate);
 

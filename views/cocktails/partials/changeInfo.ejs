@@ -1,17 +1,17 @@
 <div>
     <h2>Cocktail ID:
-        <%= cocktails.id %>
+        <%= cocktail.id %>
     </h2>
     <h4>Cocktail Name:
-        <%= cocktails.name %>
+        <%= cocktail.name %>
     </h4>
     <h4>Cocktail Ingredients:</h4>
     <p>
-        <%= cocktails.fixings %>
+        <%= cocktail.fixings %>
     </p>
 
     <div>
-        <%- include('./deleteButton', {id: cocktails.id}) %>
+        <%- include('./deleteButton', {id: cocktail.id}) %>
     </div>
 
     <div>

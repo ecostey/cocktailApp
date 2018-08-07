@@ -27,8 +27,8 @@ module.exports = {
       create(req, res, next) {
         const cocktailData = req.body;
         db.create(cocktailData)
-          .then((soda) => {
-            res.locals.soda = soda;
+          .then((cocktail) => {
+            res.locals.cocktail = cocktail;
             next();
           })
           .catch(err => next(err));
@@ -45,6 +45,7 @@ module.exports = {
       },
 
       destroy(req, res, next) {
+          debugger;
         const { id } = req.params;
         db.delete(id)
           .then(() => next())
@@ -52,10 +53,11 @@ module.exports = {
       },
 
       update(req, res, next) {
+          debugger;
         const { id } = req.params;
         const cocktailData = req.body;
     
-        cocktail.update(id, cocktailData)
+        db.update(id, cocktailData)
           .then(() => next())
           .catch(err => next(err));
       },

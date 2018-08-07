@@ -1,0 +1,12 @@
+<%- include('./partials/boilerplate') %>
+<h2>Found a Mistake? <br> Help a Girl Out!</h2>
+<form 
+  method="POST"
+  action="/cocktails/<%= cocktail.id %>?_method=PUT">
+  <%- include('./partials/bodyText') %>
+  <input type="submit" value="Update Cocktail" />
+  <div>
+        <a href="/cocktails">Back to Cocktails</a>
+</div>
+</form>
+<%- include('./partials/footer') %>

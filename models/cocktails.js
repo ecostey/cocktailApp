@@ -16,41 +16,61 @@ module.exports = {
         );
     },
 
-    //Find & list cocktails based on user-inputted cocktail name
-    findByName(inputName) {
-        inputName = `%${inputName}%`;
-        return db.many(`
-            SELECT name, fixings, recipe
+    //Find & show a cocktail by it's id.
+    findOne(id) {
+        return db.one(`
+            SELECT name, fixing, recipe
             FROM cocktails
-            WHERE name LIKE $1`, inputName
-        );
+            WHERE id = $1`, id);
     },
 
-    //Find & list cocktails based on user-inputted cocktail name
-    findByFixn(inputFixn) {
-        inputFixn = `%${inputFixn}%`;
-        return db.many(`
-            SELECT name, fixings, recipe
-            FROM cocktails
-            WHERE fixings LIKE $1`, inputFixn
-        );
-    },
 
     //Create and add a new cocktail to cocktails table
-    createCocktail(cocktail) {
-        console.log(cocktail);
+    create(newCocktail) {
         return db.one(`
-        INSERT INTO cocktails (name, fixings, recipe)
-        VALUES ($/name/, $/fixings/, $/recipe/)
-        RETURNING *`, cocktail
-        );
-    },
+        INSERT INTO cocktails
+        (name, fixing, recipe)
+        VALUES
+        ($1, $2, $3)
+        RETURNING *
+        `, [newCocktail.name, newCocktail.fixing, newCocktail.recipe]);
+      },
 
 
+      //Update 1 Cocktail (Select the cocktail by its id)
+      update(id, modifCocktail) {
+        return db.query(`
+        UPDATE cocktails
+        SET 
+          name = $2, 
+          fixing = $3,
+          recipe = $4
+        WHERE id = $1
+        RETURNING *
+        `, [id, modifCocktail.name, modifCocktail.fixing, modifCocktail.recipe]);
+      },
+
+      //Destroy 1 cocktail (select the cocktail by its id)
+      delete(id) {
+        return db.query(`
+        DELETE FROM cocktails
+        WHERE id = $1
+        `, id);
+      }
+
+    };
+    
+   
+   
+   
 
 
-
-
-
-
-}
+    // //Find & list cocktails based on user-inputted cocktail name
+    // findByFixn(inputFixn) {
+    //     inputFixn = `%${inputFixn}%`;
+    //     return db.many(`
+    //         SELECT name, fixings, recipe
+    //         FROM cocktails
+    //         WHERE fixings LIKE $1`, inputFixn
+    //     );
+    // },

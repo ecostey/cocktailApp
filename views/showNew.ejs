@@ -1,0 +1,10 @@
+<%- include('./partials/boilerplate') %>
+    <div>
+        <h2>Something Missing?
+            <br>Add to our Cocktails!</h2>
+        <form method="POST" action="/cocktails">
+            <%- include('./partials/formBody') %>
+                <input type="submit" value="Create New Cocktail" />
+        </form>
+    </div>
+    <%- include('./partials/footer') %>

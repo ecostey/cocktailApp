@@ -2,48 +2,56 @@
 const express = require('express');
 
 //Import controllers:
-//const authController = require('../controllers/authController');
 const cocktailsController = require('../controllers/cocktailsController');
-//const viewController = require('../controllers/resHandler');
+const viewController = require('../controllers/viewController');
 
 const cocktailsRouter = express.Router();
 
-//Apply authController:
-//cocktailsController.use(authController.usersOnly);
-
-const showJSON = (req, res) => {
-    res.json(res.locals.data);
-};
-
-const handle404 = (err, req, res, next) => {
-    console.error(err);
-    res.sendStatus(404);
-};
-
-const send400 = (err, req, res, next) => {
-    console.error(err);
-    res.sendStatus(400);
-};
-
-//List Routes
-//Special urls
-
-// Items
-// cocktailsRouter.route('/:id')
-//   .get(cocktailsController.getOne, showJSON)
-
-// Collection
-cocktailsRouter.route('/ingredient/:fixn')
-.get(cocktailsController.getByFixn, showJSON)
-cocktailsRouter.route('/name/:name')
-.get(cocktailsController.getByName, showJSON)
-cocktailsRouter.route('/makeNew')
-.post(cocktailsController.storeNewCocktail)
+//List Routes:
 cocktailsRouter.route('/')
-    .get(cocktailsController.getAll, showJSON)
-    
+  .get(cocktailsController.getAll, viewController.showAll, viewController.show404)
+  .post(cocktailsController.create, viewController.handleCreate);
 
-cocktailsRouter.use(handle404);
+cocktailsRouter.get(
+    '/new',
+    cocktailsController.makeBlankCocktail,
+    viewController.showNew,
+  );
+
+cocktailsRouter.get('/:id/edit', cocktailsController.findOne, viewController.showEdit);
+
+cocktailsRouter.route('/:id')
+  .get(
+    cocktailsController.findOne,
+    viewController.showOne,
+    viewController.show404,
+  )
+
+
+  .delete(cocktailsController.destroy, viewController.handleDestroy)
+  .put(cocktailsController.update, viewController.handleUpdate);
+
 
 //Export this router file.
 module.exports = cocktailsRouter;
+
+
+
+
+
+
+
+
+// const showJSON = (req, res) => {
+//     res.json(res.locals.data);
+// };
+
+// const handle404 = (err, req, res, next) => {
+//     console.error(err);
+//     res.sendStatus(404);
+// };
+
+// const send400 = (err, req, res, next) => {
+//     console.error(err);
+//     res.sendStatus(400);
+// };

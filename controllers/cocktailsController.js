@@ -8,46 +8,65 @@ module.exports = {
     getAll(req, res, next) {
         db.findAll()
             .then((cocktails) => {
-                res.locals.data = cocktails;
+                res.locals.cocktails = cocktails;
                 next();
             })
             .catch(e => next(e));
     },
 
-    //Retrieve all the cocktails with a certain name & store them in res.locals
-    getByName(req, res, next) {
-        db.findByName(req.params.name)
-            .then((cocktails) => {
-                res.locals.data = cocktails;
-                next();
-            })
-            .catch(e => next(e));
-    },
+    findOne(req, res, next) {
+        const { id } = req.params;
+        db.findOne(id)
+          .then((cocktail) => {
+            res.locals.cocktail = cocktail;
+            next();
+          })
+          .catch(err => next(err));
+      },
 
-    //Retrieve all the cocktails with certain fixing(s) & store them in res.locals
-    getByFixn(req, res, next) {
-        db.findByFixn(req.params.fixn)
-            .then((cocktails) => {
-                res.locals.data = cocktails;
-                next();
-            })
-            .catch(e => next(e));
-    },
+      create(req, res, next) {
+        const cocktailData = req.body;
+        db.create(cocktailData)
+          .then((soda) => {
+            res.locals.soda = soda;
+            next();
+          })
+          .catch(err => next(err));
+      },
 
-    //Accept cocktail input from user and store new cocktail data in res.locals.
-    storeNewCocktail(req, res, next) {
-        console.log(req.body);
-        const {name, fixings, recipe} = req.body;
-        debugger
-        db.createCocktail({name, fixings, recipe})
-            .then((newCocktail) => {
-                res.locals.data = newCocktail;
-                res.json(newCocktail);
-                next();
-            })
-        .catch(e => next(e));
-    }, 
+      makeBlankCocktail(req, res, next) {
+        const cocktail = {
+          name: '',
+          description: '',
+        };
+    
+        res.locals.cocktail = cocktail;
+        next();
+      },
 
+      destroy(req, res, next) {
+        const { id } = req.params;
+        db.delete(id)
+          .then(() => next())
+          .catch(err => next(err));
+      },
 
+      update(req, res, next) {
+        const { id } = req.params;
+        const cocktailData = req.body;
+    
+        cocktail.update(id, cocktailData)
+          .then(() => next())
+          .catch(err => next(err));
+      },
+    };
 
-}
+    // //Retrieve all the cocktails with certain fixing(s) & store them in res.locals
+    // getByFixn(req, res, next) {
+    //     db.findByFixn(req.params.fixn)
+    //         .then((cocktails) => {
+    //             res.locals.data = cocktails;
+    //             next();
+    //         })
+    //         .catch(e => next(e));
+    // },

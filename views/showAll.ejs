@@ -1,0 +1,6 @@
+<%- include('./partials/boilerplate') %>
+    <h1>Peruse Cocktails</h1>
+    <% cocktails.forEach((cocktail) => { %>
+        <%- include('./partials/changeInfo.ejs', {cocktail: cocktail}) %>
+            <% }) %>
+                <%- include('./partials/footer') %>

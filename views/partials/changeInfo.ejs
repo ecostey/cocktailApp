@@ -1,0 +1,20 @@
+<div>
+    <h2>Cocktail ID:
+        <%= cocktails.id %>
+    </h2>
+    <h4>Cocktail Name:
+        <%= cocktails.name %>
+    </h4>
+    <h4>Cocktail Ingredients:</h4>
+    <p>
+        <%= cocktails.fixings %>
+    </p>
+
+    <div>
+        <%- include('./deleteButton', {id: cocktails.id}) %>
+    </div>
+
+    <div>
+        <a href="/cocktails/<%= cocktail.id%>/edit">Edit Cocktail</a>
+    </div>
+</div>

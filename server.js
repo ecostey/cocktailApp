@@ -49,7 +49,6 @@ app.use(passport.session());
 
 //Init Router Files
 app.use('/cocktails', cocktailsRouter);
-debugger;
 app.use('/user', usersRouter);
 
 //connect to PORT

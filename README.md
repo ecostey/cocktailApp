@@ -47,5 +47,3 @@ Landing Page:
 ![pyp wireframe1](https://user-images.githubusercontent.com/36941422/43780133-e1aa9794-9a27-11e8-8b17-5159cf2616aa.jpg)
 Search Page:
 ![pyp wireframe2](https://user-images.githubusercontent.com/36941422/43780197-09b2cf68-9a28-11e8-8fcf-2c6362c95545.jpg)
-User Favs:
-![pyp wireframe3](https://user-images.githubusercontent.com/36941422/43780208-0cc62358-9a28-11e8-9edb-abb02219ba5e.jpg)

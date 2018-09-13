@@ -1,5 +1,5 @@
-module.exports = {
-    host:     process.env.DB_HOST || 'localhost',
-    port:     process.env.DB_PORT || 5432,
-    database: process.env.DB_NAME || 'cocktails_db',
+module.exports = process.end.DATABASE_URL || {
+    host: 'localhost',
+    port: 5432,
+    database: 'cocktails_db',
   };

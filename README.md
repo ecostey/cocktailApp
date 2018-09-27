@@ -2,7 +2,7 @@
 **Pick Your Poison - a cocktail recipe app**
 *General Assebly Section 2 Project*
 
-**Hosted Site**
+**Hosted Site:**
 https://shrouded-wildwood-28035.herokuapp.com/cocktails 
 
 **Video Overview:**

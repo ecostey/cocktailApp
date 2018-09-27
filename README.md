@@ -2,9 +2,11 @@
 **Pick Your Poison - a cocktail recipe app**
 *General Assebly Section 2 Project*
 
+**Hosted Site**
+https://shrouded-wildwood-28035.herokuapp.com/cocktails 
+
 **Video Overview:**
 https://youtu.be/iJO9loF0Ve0
-Overview starts with a quick look at the code. 
 
 **Technical Notes:**
   This project was written with an MVC file structure. This allowed me to evenly spread out my files & code in a way that was both functional and organized.
